@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Web</title>
+</head>
+<body>
+  <h1>Calculadora Web Simples</h1>
+
+  <div>
+    <p>Digite os valores para realizar as operações:</p>
+    <input type="number" id="a" placeholder="Valor A">
+    <input type="number" id="b" placeholder="Valor B">
+    <button onclick="calcular('somar')">Somar</button>
+    <button onclick="calcular('subtrair')">Subtrair</button>
+    <button onclick="calcular('multiplicar')">Multiplicar</button>
+    <button onclick="calcular('dividir')">Dividir</button>
+  </div>
+
+  <div id="resultado"></div>
+
+  <script>
+    function calcular(operacao) {
+      const a = parseFloat(document.getElementById('a').value);
+      const b = parseFloat(document.getElementById('b').value);
+
+      let resultado;
+      switch (operacao) {
+        case 'somar':
+          resultado = a + b;
+          break;
+        case 'subtrair':
+          resultado = a - b;
+          break;
+        case 'multiplicar':
+          resultado = a * b;
+          break;
+        case 'dividir':
+          if (b === 0) {
+            resultado = 'Não é possível dividir por zero.';
+          } else {
+            resultado = a / b;
+          }
+          break;
+        default:
+          resultado = 'Operação inválida.';
+      }
+
+      exibirResultado(resultado);
+    }
+
+    function exibirResultado(resultado) {
+      document.getElementById('resultado').innerText = `Resultado: ${resultado}`;
+    }
+  </script>
+</body>
+</html>
